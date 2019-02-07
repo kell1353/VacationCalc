@@ -6,6 +6,7 @@ initial_vacation_time = input("\nWhat are your current vacation hours?: ")
 accrual_rate = input("What is your accrual rate?: ")
 
 cur_date = datetime.date.today().strftime('%m/%d/%Y')
+#cur_date = input("What is the current date  (XX/XX/XXXX)?: ")
 str_date = str(cur_date)
 cur_mo = str_date[:2]
 cur_day = str_date[3:5]
@@ -39,12 +40,24 @@ else:
 
     
 "This calculation is for a bi-monthly pay schedule"
-if (0 < int(cur_day) < 16 and 0 < int(vac_day) < 16) or (15 < int(cur_day) < 32 and 15 < int(vac_day) < 32):
-    paydays = (int(vac_mo) - int(cur_mo))*2   
-else:
-    paydays = (int(vac_mo) - int(cur_mo))*2.5
+if (0 < int(cur_day) < 15 and 0 < int(vac_day) < 15) or (15 <= int(cur_day) < 32 and 15 <= int(vac_day) < 32):
+    paydays = (int(vac_mo) - int(cur_mo))*2
     
+if (0 < int(cur_day) < 15 and 15 <= int(vac_day) < 32):
+    paydays = ((int(vac_mo) - int(cur_mo))*2) + 1
+    
+if (15 <= int(cur_day) < 32 and 0 < int(vac_day) < 15):
+    paydays = ((int(vac_mo) - int(cur_mo))*2) - 1
+
+
+    
+vacation_amount_cap = 120    
     
 vacation_time = float(initial_vacation_time) + (int(paydays)*float(accrual_rate))
-print("\nYou will have" + " " + str(paydays) + " " + "paydays by this time")
-print("You will have a total of " + str(vacation_time) + " hours of vacation time on this date.")
+
+if vacation_time > vacation_amount_cap:
+    print("\nYou will have" + " " + str(paydays) + " " + "paydays by this time.")
+    print("You will have maxed out vacation time at a total of " + str(vacation_amount_cap) + " hours of vacation time on this date.")
+else:
+    print("\nYou will have" + " " + str(paydays) + " " + "paydays by this time.")
+    print("You will have a total of " + str(vacation_time) + " hours of vacation time on this date.")
