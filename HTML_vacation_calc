@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<h1 style = "font-size:20px;">PTO Calculator</h1>
+<body>
+
+	<form name="formcalc">
+		Current PTO : <input type ="text" name="cur_PTO">
+		<br><br>
+		Accrual Rate : <input type="text" name="acc_rate">
+		<br><br>
+        Vacation Day : <input type="date" name="vac_date" id="vac_date" value="2020-04-21">
+		<br><br>     
+		Total PTO : <input type="text" name="total_PTO">
+        <br><br>
+        
+		<input type="button" value="Calculate" onClick="vacation_calc()">
+        <br><br>       
+        
+        <p id="total"></p>
+ 
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+        <p id="demo3"></p>
+	</form>
+    
+    
+
+	<script type="text/javascript">
+    	var cur_date = new Date()
+        var cur_mo = cur_date.getMonth() + 1
+        var cur_day = cur_date.getDate()
+        var cur_year = cur_date.getFullYear()
+        document.getElementById("demo1").innerHTML = cur_date
+    	
+        
+        var date = document.getElementById("vac_date")
+        var vac_date = new Date(date.value)
+        var vac_year = vac_date.getFullYear()
+        var vac_mo = vac_date.getMonth() + 1
+        var vac_day = vac_date.getDate() + 1
+		document.getElementById("demo2").innerHTML = vac_date
+
+        
+        if (vac_year > cur_year) {
+          var vac_mo = vac_mo + 12*(vac_year - cur_year);
+        } else {
+        	var vac_mo = vac_date.getMonth() + 1;
+        }    
+    
+
+       	
+		function vacation_calc()
+        {
+			var accrual_rate, initial_vacation_time, paydays, vacation_time;
+            
+			initial_vacation_time = Number(document.formcalc.cur_PTO.value);
+			accrual_rate = Number(document.formcalc.acc_rate.value); 
+            
+            if ((0 < cur_day < 15 && 0 < vac_day < 15) ^ (15 <= cur_day < 32 && 15 <= vac_day < 32)) {
+            	paydays = (vac_mo - cur_mo)*2;
+                
+            } else if (0 < cur_day < 15 && 15 <= vac_day < 32) { 
+            	paydays = ((vac_mo - cur_mo)*2) + 1;
+                
+            } else if (15 <= cur_day < 32 && 0 < vac_day < 15) {
+            	paydays = ((vac_mo - cur_mo)*2) - 1;
+            }
+                
+                
+            vacation_time = initial_vacation_time + (paydays*accrual_rate)
+            
+			document.formcalc.total_PTO.value = vacation_time
+            document.getElementById("total").innerHTML = "You will have a total amount of " + vacation_time + " hours of vacation time by this date."
+		}
