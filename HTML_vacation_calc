@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-<h1 style = "font-size:20px;">PTO Calculator</h1>
-<body>
+input[type=text], select, textarea {
+  display: block;
+  width: 150px;
+  height: 25px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+input[type=date], select, textarea {
+  display: block;
+  width: 150px;
+  height: 25px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+input[type=button], select, textarea {
+  width: 75px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  margin: 5px 0;
+}
+</style>
+
+<h1 style = "font-size:20px; font-family:calibri;">PTO Calculator</h1>
+<body style = "font-family:calibri;">
 
 	<form name="formcalc">
-		Current PTO : <input type ="text" name="cur_PTO">
-		<br><br>
-		Accrual Rate : <input type="text" name="acc_rate">
-		<br><br>
-        	Vacation Day : <input type="date" name="vac_date" id="vac_date" onChange="vacation_calc()">
-		<br><br>     
-		Total PTO : <input type="text" name="total_PTO">
-        	<br><br>
+		Current PTO <input type ="text" style = "font-family:calibri;" name="cur_PTO">
+		Accrual Rate <input type="text" style = "font-family:calibri;" name="acc_rate">
+        	Vacation Date <input type="date" style = "font-family:calibri;" name="vac_date" id="vac_date" onChange="vacation_calc()">   
+		Total PTO <input type="text" style = "font-family:veranda;" name="total_PTO">
         
-		<input type="button" value="Calculate" onClick="vacation_calc()">
-        	<br><br>       
-        
-        	<p id="total"></p>
- 
-        	<p id="demo1"></p>
-        	<p id="demo2"></p>
-        	<p id="demo3"></p>
+		<input type="button" value="Calculate" onClick="vacation_calc()">      
 	</form>
-    
     
 
 	<script type="text/javascript">
