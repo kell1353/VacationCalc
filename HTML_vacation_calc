@@ -33,6 +33,7 @@ input[type=button], select, textarea {
   border-radius: 5px;
   resize: vertical;
   margin: 5px 0;
+  box-shadow: 0 1px 15px 0 rgba(0,0,0,0.2), 0 1px 15px 0 rgba(0,0,0,0.19);
 }
 </style>
 
