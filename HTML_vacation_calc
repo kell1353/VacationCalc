@@ -13,7 +13,7 @@
         Vacation Day : <input type="date" name="vac_date" id="vac_date" value="2020-04-21">
 		<br><br>     
 		Total PTO : <input type="text" name="total_PTO">
-        <br><br>
+        	<br><br>
         
 		<input type="button" value="Calculate" onClick="vacation_calc()">
         <br><br>       
@@ -49,7 +49,8 @@
         	var vac_mo = vac_date.getMonth() + 1;
         }    
     
-
+		vacation_time_cap = 270
+        
        	
 		function vacation_calc()
         {
@@ -71,6 +72,18 @@
                 
             vacation_time = initial_vacation_time + (paydays*accrual_rate)
             
-			document.formcalc.total_PTO.value = vacation_time
-            document.getElementById("total").innerHTML = "You will have a total amount of " + vacation_time + " hours of vacation time by this date."
+            if (vacation_time > vacation_time_cap) {
+				document.formcalc.total_PTO.value = vacation_time_cap
+            	document.getElementById("total").innerHTML = "You will have maxed out at a total amount of " + vacation_time_cap + " hours of vacation time by this date.";
+                
+            } else {
+            	document.formcalc.total_PTO.value = vacation_time
+            	document.getElementById("total").innerHTML = "You will have a total amount of " + vacation_time + " hours of vacation time by this date.";
+            }
+            
 		}
+
+
+	</script>
+</body>
+</html>
