@@ -44,9 +44,10 @@ input[type=button], select, textarea {
 		Current PTO <input type ="text" style = "font-family:calibri;" name="cur_PTO">
 		Accrual Rate <input type="text" style = "font-family:calibri;" name="acc_rate">
         	Vacation Date <input type="date" style = "font-family:calibri;" name="vac_date" id="vac_date" onChange="vacation_calc()">   
-		Total PTO <input type="text" style = "font-family:veranda;" name="total_PTO">
-        
-		<input type="button" value="Calculate" onClick="vacation_calc()">      
+		<input type="button" value="Calculate" onClick="vacation_calc()"> 
+        </p>
+		<p>
+        Calculated PTO <input type="text" style = "font-family:veranda;" name="total_PTO">
 	</form>
     
 
