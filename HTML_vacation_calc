@@ -45,7 +45,7 @@ input[type=button], select, textarea {
 		Accrual Rate <input type="text" style = "font-family:calibri;" name="acc_rate">
         	Vacation Date <input type="date" style = "font-family:calibri;" name="vac_date" id="vac_date" onChange="vacation_calc()">   
 		<input type="button" value="Calculate" onClick="vacation_calc()"> 
-        </p>
+        	</p>
 		<p>
         Calculated PTO <input type="text" style = "font-family:veranda;" name="total_PTO">
 	</form>
@@ -86,10 +86,10 @@ input[type=button], select, textarea {
 
 			//Adjust the month calculation for multiple years
             		if (vac_year > cur_year) {
-          		var vac_mo = vac_mo + 12*(vac_year - cur_year);
-        		} else {
-        		var vac_mo = vac_date.getMonth() + 1;
-        		}    
+		var vac_mo = vac_mo + 12*(vac_year - cur_year);
+        	} else {
+        	var vac_mo = vac_date.getMonth() + 1;
+        	}    
 
 
             		//Cacluating the amounts of paydays one will have by the requested date.
