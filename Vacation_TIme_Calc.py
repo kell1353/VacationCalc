@@ -3,6 +3,7 @@ import sys
 
 print("Vacation accrual tracker")
 initial_vacation_time = input("\nWhat are your current vacation hours?: ")
+"My accrual rate is 5 hours per pay period"
 accrual_rate = input("What is your accrual rate?: ")
 
 #cur_date = input("What is the current date  (XX/XX/XXXX)?: ")
